@@ -1,0 +1,1480 @@
+{
+  "contractName": "ComLib",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "value",
+          "type": "HealthContract.FeedbackType"
+        }
+      ],
+      "name": "FeedbackToNum",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "NumToFeedback",
+      "outputs": [
+        {
+          "name": "",
+          "type": "HealthContract.FeedbackType"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x6060604052341561000f57600080fd5b6102178061001e6000396000f30060606040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680637a4b0ec3146100515780638150219114610080575b600080fd5b61006a600480803560ff169060200190919050506100ba565b6040518082815260200191505060405180910390f35b6100966004808035906020019091905050610189565b604051808260058111156100a657fe5b60ff16815260200191505060405180910390f35b6000600160058111156100c957fe5b8260058111156100d557fe5b14156100e45760019050610184565b600260058111156100f157fe5b8260058111156100fd57fe5b141561010c5760029050610184565b6003600581111561011957fe5b82600581111561012557fe5b14156101345760039050610184565b6004600581111561014157fe5b82600581111561014d57fe5b141561015c5760049050610184565b60058081111561016857fe5b82600581111561017457fe5b14156101835760059050610184565b5b919050565b6000600182141561019d57600190506101e6565b60028214156101af57600290506101e6565b60038214156101c157600390506101e6565b60048214156101d357600490506101e6565b60058214156101e557600590506101e6565b5b9190505600a165627a7a72305820c512e3fe99e9107b2bc3da0c894a982ca6fedc8dc645e4ea26bb079f91545fff0029",
+  "deployedBytecode": "0x60606040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680637a4b0ec3146100515780638150219114610080575b600080fd5b61006a600480803560ff169060200190919050506100ba565b6040518082815260200191505060405180910390f35b6100966004808035906020019091905050610189565b604051808260058111156100a657fe5b60ff16815260200191505060405180910390f35b6000600160058111156100c957fe5b8260058111156100d557fe5b14156100e45760019050610184565b600260058111156100f157fe5b8260058111156100fd57fe5b141561010c5760029050610184565b6003600581111561011957fe5b82600581111561012557fe5b14156101345760039050610184565b6004600581111561014157fe5b82600581111561014d57fe5b141561015c5760049050610184565b60058081111561016857fe5b82600581111561017457fe5b14156101835760059050610184565b5b919050565b6000600182141561019d57600190506101e6565b60028214156101af57600290506101e6565b60038214156101c157600390506101e6565b60048214156101d357600490506101e6565b60058214156101e557600590506101e6565b5b9190505600a165627a7a72305820c512e3fe99e9107b2bc3da0c894a982ca6fedc8dc645e4ea26bb079f91545fff0029",
+  "sourceMap": "60:1186:0:-;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "60:1186:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;77:575;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;668;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;77;185:4;215:32;208:39;;;;;;;;:5;:39;;;;;;;;;205:435;;;273:1;266:8;;;;205:435;304:35;297:42;;;;;;;;:5;:42;;;;;;;;;294:346;;;365:1;358:8;;;;294:346;396:32;389:39;;;;;;;;:5;:39;;;;;;;;;386:254;;;454:1;447:8;;;;386:254;485:32;478:39;;;;;;;;:5;:39;;;;;;;;;475:165;;;543:1;536:8;;;;475:165;574:39;567:46;;;;;;;;:5;:46;;;;;;;;;564:76;;;639:1;632:8;;;;564:76;77:575;;;;:::o;668:::-;753:27;806:1;799:5;:8;796:435;;;833:32;826:39;;;;796:435;895:1;888:5;:8;885:346;;;922:35;915:42;;;;885:346;987:1;980:5;:8;977:254;;;1014:32;1007:39;;;;977:254;1076:1;1069:5;:8;1066:165;;;1103:32;1096:39;;;;1066:165;1165:1;1158:5;:8;1155:76;;;1192:39;1185:46;;;;1155:76;668:575;;;;:::o",
+  "source": "pragma solidity ^0.4.17;\r\nimport \"./HealthContract.sol\";\r\n\r\nlibrary ComLib{\r\nfunction FeedbackToNum(HealthContract.FeedbackType value) \r\n        public\r\n        pure \r\n        returns (uint){\r\n            if(value==HealthContract.FeedbackType.Poor)\r\n                return 1;\r\n            else if(value==HealthContract.FeedbackType.Average)\r\n                return 2;\r\n            else if(value==HealthContract.FeedbackType.Good)\r\n                return 3;\r\n            else if(value==HealthContract.FeedbackType.Best)\r\n                return 4;\r\n            else if(value==HealthContract.FeedbackType.Exceptional)\r\n                return 5;\r\n        }\r\n        \r\n    function NumToFeedback(uint value) \r\n        public\r\n        pure \r\n        returns (HealthContract.FeedbackType){\r\n            if(value==1)\r\n                return HealthContract.FeedbackType.Poor;\r\n            else if(value==2)\r\n                return HealthContract.FeedbackType.Average;\r\n            else if(value==3)\r\n                return HealthContract.FeedbackType.Good;\r\n            else if(value==4)\r\n                return HealthContract.FeedbackType.Best;\r\n            else if(value==5)\r\n                return HealthContract.FeedbackType.Exceptional;\r\n        }\r\n}\r\n",
+  "sourcePath": "X:\\eth\\smarthealth\\contracts\\ComLib.sol",
+  "ast": {
+    "attributes": {
+      "absolutePath": "/X/eth/smarthealth/contracts/ComLib.sol",
+      "exportedSymbols": {
+        "ComLib": [
+          99
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.4",
+            ".17"
+          ]
+        },
+        "id": 1,
+        "name": "PragmaDirective",
+        "src": "0:24:0"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 546,
+          "absolutePath": "/X/eth/smarthealth/contracts/HealthContract.sol",
+          "file": "./HealthContract.sol",
+          "scope": 100,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 2,
+        "name": "ImportDirective",
+        "src": "26:30:0"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "library",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            99
+          ],
+          "name": "ComLib",
+          "scope": 100
+        },
+        "children": [
+          {
+            "attributes": {
+              "constant": true,
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "FeedbackToNum",
+              "payable": false,
+              "scope": 99,
+              "stateMutability": "pure",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "value",
+                      "scope": 50,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "enum HealthContract.FeedbackType",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "HealthContract.FeedbackType",
+                          "referencedDeclaration": 116,
+                          "type": "enum HealthContract.FeedbackType"
+                        },
+                        "id": 3,
+                        "name": "UserDefinedTypeName",
+                        "src": "100:27:0"
+                      }
+                    ],
+                    "id": 4,
+                    "name": "VariableDeclaration",
+                    "src": "100:33:0"
+                  }
+                ],
+                "id": 5,
+                "name": "ParameterList",
+                "src": "99:35:0"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 50,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 6,
+                        "name": "ElementaryTypeName",
+                        "src": "185:4:0"
+                      }
+                    ],
+                    "id": 7,
+                    "name": "VariableDeclaration",
+                    "src": "185:4:0"
+                  }
+                ],
+                "id": 8,
+                "name": "ParameterList",
+                "src": "184:6:0"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "commonType": {
+                            "typeIdentifier": "t_enum$_FeedbackType_$116",
+                            "typeString": "enum HealthContract.FeedbackType"
+                          },
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "==",
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 4,
+                              "type": "enum HealthContract.FeedbackType",
+                              "value": "value"
+                            },
+                            "id": 9,
+                            "name": "Identifier",
+                            "src": "208:5:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "member_name": "Poor",
+                              "referencedDeclaration": null,
+                              "type": "enum HealthContract.FeedbackType"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "FeedbackType",
+                                  "referencedDeclaration": 116,
+                                  "type": "type(enum HealthContract.FeedbackType)"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 545,
+                                      "type": "type(contract HealthContract)",
+                                      "value": "HealthContract"
+                                    },
+                                    "id": 10,
+                                    "name": "Identifier",
+                                    "src": "215:14:0"
+                                  }
+                                ],
+                                "id": 11,
+                                "name": "MemberAccess",
+                                "src": "215:27:0"
+                              }
+                            ],
+                            "id": 12,
+                            "name": "MemberAccess",
+                            "src": "215:32:0"
+                          }
+                        ],
+                        "id": 13,
+                        "name": "BinaryOperation",
+                        "src": "208:39:0"
+                      },
+                      {
+                        "attributes": {
+                          "functionReturnParameters": 8
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "31",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 1",
+                              "value": "1"
+                            },
+                            "id": 14,
+                            "name": "Literal",
+                            "src": "273:1:0"
+                          }
+                        ],
+                        "id": 15,
+                        "name": "Return",
+                        "src": "266:8:0"
+                      },
+                      {
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "commonType": {
+                                "typeIdentifier": "t_enum$_FeedbackType_$116",
+                                "typeString": "enum HealthContract.FeedbackType"
+                              },
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "==",
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 4,
+                                  "type": "enum HealthContract.FeedbackType",
+                                  "value": "value"
+                                },
+                                "id": 16,
+                                "name": "Identifier",
+                                "src": "297:5:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "member_name": "Average",
+                                  "referencedDeclaration": null,
+                                  "type": "enum HealthContract.FeedbackType"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "member_name": "FeedbackType",
+                                      "referencedDeclaration": 116,
+                                      "type": "type(enum HealthContract.FeedbackType)"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 545,
+                                          "type": "type(contract HealthContract)",
+                                          "value": "HealthContract"
+                                        },
+                                        "id": 17,
+                                        "name": "Identifier",
+                                        "src": "304:14:0"
+                                      }
+                                    ],
+                                    "id": 18,
+                                    "name": "MemberAccess",
+                                    "src": "304:27:0"
+                                  }
+                                ],
+                                "id": 19,
+                                "name": "MemberAccess",
+                                "src": "304:35:0"
+                              }
+                            ],
+                            "id": 20,
+                            "name": "BinaryOperation",
+                            "src": "297:42:0"
+                          },
+                          {
+                            "attributes": {
+                              "functionReturnParameters": 8
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "hexvalue": "32",
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "subdenomination": null,
+                                  "token": "number",
+                                  "type": "int_const 2",
+                                  "value": "2"
+                                },
+                                "id": 21,
+                                "name": "Literal",
+                                "src": "365:1:0"
+                              }
+                            ],
+                            "id": 22,
+                            "name": "Return",
+                            "src": "358:8:0"
+                          },
+                          {
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "commonType": {
+                                    "typeIdentifier": "t_enum$_FeedbackType_$116",
+                                    "typeString": "enum HealthContract.FeedbackType"
+                                  },
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "operator": "==",
+                                  "type": "bool"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 4,
+                                      "type": "enum HealthContract.FeedbackType",
+                                      "value": "value"
+                                    },
+                                    "id": 23,
+                                    "name": "Identifier",
+                                    "src": "389:5:0"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "member_name": "Good",
+                                      "referencedDeclaration": null,
+                                      "type": "enum HealthContract.FeedbackType"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "member_name": "FeedbackType",
+                                          "referencedDeclaration": 116,
+                                          "type": "type(enum HealthContract.FeedbackType)"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": 545,
+                                              "type": "type(contract HealthContract)",
+                                              "value": "HealthContract"
+                                            },
+                                            "id": 24,
+                                            "name": "Identifier",
+                                            "src": "396:14:0"
+                                          }
+                                        ],
+                                        "id": 25,
+                                        "name": "MemberAccess",
+                                        "src": "396:27:0"
+                                      }
+                                    ],
+                                    "id": 26,
+                                    "name": "MemberAccess",
+                                    "src": "396:32:0"
+                                  }
+                                ],
+                                "id": 27,
+                                "name": "BinaryOperation",
+                                "src": "389:39:0"
+                              },
+                              {
+                                "attributes": {
+                                  "functionReturnParameters": 8
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "hexvalue": "33",
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "subdenomination": null,
+                                      "token": "number",
+                                      "type": "int_const 3",
+                                      "value": "3"
+                                    },
+                                    "id": 28,
+                                    "name": "Literal",
+                                    "src": "454:1:0"
+                                  }
+                                ],
+                                "id": 29,
+                                "name": "Return",
+                                "src": "447:8:0"
+                              },
+                              {
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "commonType": {
+                                        "typeIdentifier": "t_enum$_FeedbackType_$116",
+                                        "typeString": "enum HealthContract.FeedbackType"
+                                      },
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "operator": "==",
+                                      "type": "bool"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 4,
+                                          "type": "enum HealthContract.FeedbackType",
+                                          "value": "value"
+                                        },
+                                        "id": 30,
+                                        "name": "Identifier",
+                                        "src": "478:5:0"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "member_name": "Best",
+                                          "referencedDeclaration": null,
+                                          "type": "enum HealthContract.FeedbackType"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "isConstant": false,
+                                              "isLValue": false,
+                                              "isPure": false,
+                                              "lValueRequested": false,
+                                              "member_name": "FeedbackType",
+                                              "referencedDeclaration": 116,
+                                              "type": "type(enum HealthContract.FeedbackType)"
+                                            },
+                                            "children": [
+                                              {
+                                                "attributes": {
+                                                  "argumentTypes": null,
+                                                  "overloadedDeclarations": [
+                                                    null
+                                                  ],
+                                                  "referencedDeclaration": 545,
+                                                  "type": "type(contract HealthContract)",
+                                                  "value": "HealthContract"
+                                                },
+                                                "id": 31,
+                                                "name": "Identifier",
+                                                "src": "485:14:0"
+                                              }
+                                            ],
+                                            "id": 32,
+                                            "name": "MemberAccess",
+                                            "src": "485:27:0"
+                                          }
+                                        ],
+                                        "id": 33,
+                                        "name": "MemberAccess",
+                                        "src": "485:32:0"
+                                      }
+                                    ],
+                                    "id": 34,
+                                    "name": "BinaryOperation",
+                                    "src": "478:39:0"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "functionReturnParameters": 8
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "hexvalue": "34",
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "subdenomination": null,
+                                          "token": "number",
+                                          "type": "int_const 4",
+                                          "value": "4"
+                                        },
+                                        "id": 35,
+                                        "name": "Literal",
+                                        "src": "543:1:0"
+                                      }
+                                    ],
+                                    "id": 36,
+                                    "name": "Return",
+                                    "src": "536:8:0"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "falseBody": null
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "commonType": {
+                                            "typeIdentifier": "t_enum$_FeedbackType_$116",
+                                            "typeString": "enum HealthContract.FeedbackType"
+                                          },
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "operator": "==",
+                                          "type": "bool"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": 4,
+                                              "type": "enum HealthContract.FeedbackType",
+                                              "value": "value"
+                                            },
+                                            "id": 37,
+                                            "name": "Identifier",
+                                            "src": "567:5:0"
+                                          },
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "isConstant": false,
+                                              "isLValue": false,
+                                              "isPure": true,
+                                              "lValueRequested": false,
+                                              "member_name": "Exceptional",
+                                              "referencedDeclaration": null,
+                                              "type": "enum HealthContract.FeedbackType"
+                                            },
+                                            "children": [
+                                              {
+                                                "attributes": {
+                                                  "argumentTypes": null,
+                                                  "isConstant": false,
+                                                  "isLValue": false,
+                                                  "isPure": false,
+                                                  "lValueRequested": false,
+                                                  "member_name": "FeedbackType",
+                                                  "referencedDeclaration": 116,
+                                                  "type": "type(enum HealthContract.FeedbackType)"
+                                                },
+                                                "children": [
+                                                  {
+                                                    "attributes": {
+                                                      "argumentTypes": null,
+                                                      "overloadedDeclarations": [
+                                                        null
+                                                      ],
+                                                      "referencedDeclaration": 545,
+                                                      "type": "type(contract HealthContract)",
+                                                      "value": "HealthContract"
+                                                    },
+                                                    "id": 38,
+                                                    "name": "Identifier",
+                                                    "src": "574:14:0"
+                                                  }
+                                                ],
+                                                "id": 39,
+                                                "name": "MemberAccess",
+                                                "src": "574:27:0"
+                                              }
+                                            ],
+                                            "id": 40,
+                                            "name": "MemberAccess",
+                                            "src": "574:39:0"
+                                          }
+                                        ],
+                                        "id": 41,
+                                        "name": "BinaryOperation",
+                                        "src": "567:46:0"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "functionReturnParameters": 8
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "hexvalue": "35",
+                                              "isConstant": false,
+                                              "isLValue": false,
+                                              "isPure": true,
+                                              "lValueRequested": false,
+                                              "subdenomination": null,
+                                              "token": "number",
+                                              "type": "int_const 5",
+                                              "value": "5"
+                                            },
+                                            "id": 42,
+                                            "name": "Literal",
+                                            "src": "639:1:0"
+                                          }
+                                        ],
+                                        "id": 43,
+                                        "name": "Return",
+                                        "src": "632:8:0"
+                                      }
+                                    ],
+                                    "id": 44,
+                                    "name": "IfStatement",
+                                    "src": "564:76:0"
+                                  }
+                                ],
+                                "id": 45,
+                                "name": "IfStatement",
+                                "src": "475:165:0"
+                              }
+                            ],
+                            "id": 46,
+                            "name": "IfStatement",
+                            "src": "386:254:0"
+                          }
+                        ],
+                        "id": 47,
+                        "name": "IfStatement",
+                        "src": "294:346:0"
+                      }
+                    ],
+                    "id": 48,
+                    "name": "IfStatement",
+                    "src": "205:435:0"
+                  }
+                ],
+                "id": 49,
+                "name": "Block",
+                "src": "190:462:0"
+              }
+            ],
+            "id": 50,
+            "name": "FunctionDefinition",
+            "src": "77:575:0"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "NumToFeedback",
+              "payable": false,
+              "scope": 99,
+              "stateMutability": "pure",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "value",
+                      "scope": 98,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 51,
+                        "name": "ElementaryTypeName",
+                        "src": "691:4:0"
+                      }
+                    ],
+                    "id": 52,
+                    "name": "VariableDeclaration",
+                    "src": "691:10:0"
+                  }
+                ],
+                "id": 53,
+                "name": "ParameterList",
+                "src": "690:12:0"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 98,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "enum HealthContract.FeedbackType",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "HealthContract.FeedbackType",
+                          "referencedDeclaration": 116,
+                          "type": "enum HealthContract.FeedbackType"
+                        },
+                        "id": 54,
+                        "name": "UserDefinedTypeName",
+                        "src": "753:27:0"
+                      }
+                    ],
+                    "id": 55,
+                    "name": "VariableDeclaration",
+                    "src": "753:27:0"
+                  }
+                ],
+                "id": 56,
+                "name": "ParameterList",
+                "src": "752:29:0"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "commonType": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "==",
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 52,
+                              "type": "uint256",
+                              "value": "value"
+                            },
+                            "id": 57,
+                            "name": "Identifier",
+                            "src": "799:5:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "31",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 1",
+                              "value": "1"
+                            },
+                            "id": 58,
+                            "name": "Literal",
+                            "src": "806:1:0"
+                          }
+                        ],
+                        "id": 59,
+                        "name": "BinaryOperation",
+                        "src": "799:8:0"
+                      },
+                      {
+                        "attributes": {
+                          "functionReturnParameters": 56
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "member_name": "Poor",
+                              "referencedDeclaration": null,
+                              "type": "enum HealthContract.FeedbackType"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "FeedbackType",
+                                  "referencedDeclaration": 116,
+                                  "type": "type(enum HealthContract.FeedbackType)"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 545,
+                                      "type": "type(contract HealthContract)",
+                                      "value": "HealthContract"
+                                    },
+                                    "id": 60,
+                                    "name": "Identifier",
+                                    "src": "833:14:0"
+                                  }
+                                ],
+                                "id": 61,
+                                "name": "MemberAccess",
+                                "src": "833:27:0"
+                              }
+                            ],
+                            "id": 62,
+                            "name": "MemberAccess",
+                            "src": "833:32:0"
+                          }
+                        ],
+                        "id": 63,
+                        "name": "Return",
+                        "src": "826:39:0"
+                      },
+                      {
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "commonType": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              },
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "==",
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 52,
+                                  "type": "uint256",
+                                  "value": "value"
+                                },
+                                "id": 64,
+                                "name": "Identifier",
+                                "src": "888:5:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "hexvalue": "32",
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "subdenomination": null,
+                                  "token": "number",
+                                  "type": "int_const 2",
+                                  "value": "2"
+                                },
+                                "id": 65,
+                                "name": "Literal",
+                                "src": "895:1:0"
+                              }
+                            ],
+                            "id": 66,
+                            "name": "BinaryOperation",
+                            "src": "888:8:0"
+                          },
+                          {
+                            "attributes": {
+                              "functionReturnParameters": 56
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "member_name": "Average",
+                                  "referencedDeclaration": null,
+                                  "type": "enum HealthContract.FeedbackType"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "member_name": "FeedbackType",
+                                      "referencedDeclaration": 116,
+                                      "type": "type(enum HealthContract.FeedbackType)"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 545,
+                                          "type": "type(contract HealthContract)",
+                                          "value": "HealthContract"
+                                        },
+                                        "id": 67,
+                                        "name": "Identifier",
+                                        "src": "922:14:0"
+                                      }
+                                    ],
+                                    "id": 68,
+                                    "name": "MemberAccess",
+                                    "src": "922:27:0"
+                                  }
+                                ],
+                                "id": 69,
+                                "name": "MemberAccess",
+                                "src": "922:35:0"
+                              }
+                            ],
+                            "id": 70,
+                            "name": "Return",
+                            "src": "915:42:0"
+                          },
+                          {
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "commonType": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  },
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "operator": "==",
+                                  "type": "bool"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 52,
+                                      "type": "uint256",
+                                      "value": "value"
+                                    },
+                                    "id": 71,
+                                    "name": "Identifier",
+                                    "src": "980:5:0"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "hexvalue": "33",
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "subdenomination": null,
+                                      "token": "number",
+                                      "type": "int_const 3",
+                                      "value": "3"
+                                    },
+                                    "id": 72,
+                                    "name": "Literal",
+                                    "src": "987:1:0"
+                                  }
+                                ],
+                                "id": 73,
+                                "name": "BinaryOperation",
+                                "src": "980:8:0"
+                              },
+                              {
+                                "attributes": {
+                                  "functionReturnParameters": 56
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "member_name": "Good",
+                                      "referencedDeclaration": null,
+                                      "type": "enum HealthContract.FeedbackType"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "member_name": "FeedbackType",
+                                          "referencedDeclaration": 116,
+                                          "type": "type(enum HealthContract.FeedbackType)"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": 545,
+                                              "type": "type(contract HealthContract)",
+                                              "value": "HealthContract"
+                                            },
+                                            "id": 74,
+                                            "name": "Identifier",
+                                            "src": "1014:14:0"
+                                          }
+                                        ],
+                                        "id": 75,
+                                        "name": "MemberAccess",
+                                        "src": "1014:27:0"
+                                      }
+                                    ],
+                                    "id": 76,
+                                    "name": "MemberAccess",
+                                    "src": "1014:32:0"
+                                  }
+                                ],
+                                "id": 77,
+                                "name": "Return",
+                                "src": "1007:39:0"
+                              },
+                              {
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "commonType": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                      },
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "operator": "==",
+                                      "type": "bool"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 52,
+                                          "type": "uint256",
+                                          "value": "value"
+                                        },
+                                        "id": 78,
+                                        "name": "Identifier",
+                                        "src": "1069:5:0"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "hexvalue": "34",
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "subdenomination": null,
+                                          "token": "number",
+                                          "type": "int_const 4",
+                                          "value": "4"
+                                        },
+                                        "id": 79,
+                                        "name": "Literal",
+                                        "src": "1076:1:0"
+                                      }
+                                    ],
+                                    "id": 80,
+                                    "name": "BinaryOperation",
+                                    "src": "1069:8:0"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "functionReturnParameters": 56
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "member_name": "Best",
+                                          "referencedDeclaration": null,
+                                          "type": "enum HealthContract.FeedbackType"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "isConstant": false,
+                                              "isLValue": false,
+                                              "isPure": false,
+                                              "lValueRequested": false,
+                                              "member_name": "FeedbackType",
+                                              "referencedDeclaration": 116,
+                                              "type": "type(enum HealthContract.FeedbackType)"
+                                            },
+                                            "children": [
+                                              {
+                                                "attributes": {
+                                                  "argumentTypes": null,
+                                                  "overloadedDeclarations": [
+                                                    null
+                                                  ],
+                                                  "referencedDeclaration": 545,
+                                                  "type": "type(contract HealthContract)",
+                                                  "value": "HealthContract"
+                                                },
+                                                "id": 81,
+                                                "name": "Identifier",
+                                                "src": "1103:14:0"
+                                              }
+                                            ],
+                                            "id": 82,
+                                            "name": "MemberAccess",
+                                            "src": "1103:27:0"
+                                          }
+                                        ],
+                                        "id": 83,
+                                        "name": "MemberAccess",
+                                        "src": "1103:32:0"
+                                      }
+                                    ],
+                                    "id": 84,
+                                    "name": "Return",
+                                    "src": "1096:39:0"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "falseBody": null
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "commonType": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                          },
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "operator": "==",
+                                          "type": "bool"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": 52,
+                                              "type": "uint256",
+                                              "value": "value"
+                                            },
+                                            "id": 85,
+                                            "name": "Identifier",
+                                            "src": "1158:5:0"
+                                          },
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "hexvalue": "35",
+                                              "isConstant": false,
+                                              "isLValue": false,
+                                              "isPure": true,
+                                              "lValueRequested": false,
+                                              "subdenomination": null,
+                                              "token": "number",
+                                              "type": "int_const 5",
+                                              "value": "5"
+                                            },
+                                            "id": 86,
+                                            "name": "Literal",
+                                            "src": "1165:1:0"
+                                          }
+                                        ],
+                                        "id": 87,
+                                        "name": "BinaryOperation",
+                                        "src": "1158:8:0"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "functionReturnParameters": 56
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "isConstant": false,
+                                              "isLValue": false,
+                                              "isPure": true,
+                                              "lValueRequested": false,
+                                              "member_name": "Exceptional",
+                                              "referencedDeclaration": null,
+                                              "type": "enum HealthContract.FeedbackType"
+                                            },
+                                            "children": [
+                                              {
+                                                "attributes": {
+                                                  "argumentTypes": null,
+                                                  "isConstant": false,
+                                                  "isLValue": false,
+                                                  "isPure": false,
+                                                  "lValueRequested": false,
+                                                  "member_name": "FeedbackType",
+                                                  "referencedDeclaration": 116,
+                                                  "type": "type(enum HealthContract.FeedbackType)"
+                                                },
+                                                "children": [
+                                                  {
+                                                    "attributes": {
+                                                      "argumentTypes": null,
+                                                      "overloadedDeclarations": [
+                                                        null
+                                                      ],
+                                                      "referencedDeclaration": 545,
+                                                      "type": "type(contract HealthContract)",
+                                                      "value": "HealthContract"
+                                                    },
+                                                    "id": 88,
+                                                    "name": "Identifier",
+                                                    "src": "1192:14:0"
+                                                  }
+                                                ],
+                                                "id": 89,
+                                                "name": "MemberAccess",
+                                                "src": "1192:27:0"
+                                              }
+                                            ],
+                                            "id": 90,
+                                            "name": "MemberAccess",
+                                            "src": "1192:39:0"
+                                          }
+                                        ],
+                                        "id": 91,
+                                        "name": "Return",
+                                        "src": "1185:46:0"
+                                      }
+                                    ],
+                                    "id": 92,
+                                    "name": "IfStatement",
+                                    "src": "1155:76:0"
+                                  }
+                                ],
+                                "id": 93,
+                                "name": "IfStatement",
+                                "src": "1066:165:0"
+                              }
+                            ],
+                            "id": 94,
+                            "name": "IfStatement",
+                            "src": "977:254:0"
+                          }
+                        ],
+                        "id": 95,
+                        "name": "IfStatement",
+                        "src": "885:346:0"
+                      }
+                    ],
+                    "id": 96,
+                    "name": "IfStatement",
+                    "src": "796:435:0"
+                  }
+                ],
+                "id": 97,
+                "name": "Block",
+                "src": "781:462:0"
+              }
+            ],
+            "id": 98,
+            "name": "FunctionDefinition",
+            "src": "668:575:0"
+          }
+        ],
+        "id": 99,
+        "name": "ContractDefinition",
+        "src": "60:1186:0"
+      }
+    ],
+    "id": 100,
+    "name": "SourceUnit",
+    "src": "0:1248:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.19+commit.c4cbbb05.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "1.0.1",
+  "updatedAt": "2018-02-22T06:46:38.543Z"
+}
